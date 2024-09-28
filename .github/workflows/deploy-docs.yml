@@ -40,7 +40,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --recursive --frozen-lockfile
 
-      - name: Build dics
+      - name: Build docs
         run: pnpm build
 
       - name: Upload artifact
