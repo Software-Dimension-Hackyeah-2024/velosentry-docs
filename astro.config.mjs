@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://software-dimension-hackyeah-2024.github.io/velosentry-docs',
   base: '/velosentry-docs',
   integrations: [
     starlight({
