@@ -23,12 +23,10 @@ export default defineConfig({
           label: 'Guides',
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
+            { label: 'Getting Started', slug: 'guides/getting-started' },
+            { label: 'Route API', slug: 'guides/route-api' },
+            { label: 'Weather API', slug: 'guides/weather-api' },
           ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
         },
       ],
     }),
