@@ -1,32 +1,33 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://software-dimension-hackyeah-2024.github.io/velosentry-docs',
-  base: '/velosentry-docs',
+  site: "https://software-dimension-hackyeah-2024.github.io/velosentry-docs",
+  base: "/velosentry-docs",
   integrations: [
     starlight({
-      title: 'VeloSentry',
+      title: "VeloSentry",
+      customCss: ["./src/styles/custom.css"],
       logo: {
-        light: '/public/horizontal-logo-light.svg',
-        dark: '/public/horizontal-logo-dark.svg',
-        alt: 'VeloSentry Logo',
+        light: "/public/horizontal-logo-light.svg",
+        dark: "/public/horizontal-logo-dark.svg",
+        alt: "VeloSentry Logo",
         replacesTitle: true,
       },
       social: {
         github:
-          'https://github.com/Software-Dimension-Hackyeah-2024/velosentry',
+          "https://github.com/Software-Dimension-Hackyeah-2024/velosentry",
       },
       sidebar: [
         {
-          label: 'Guides',
+          label: "Guides",
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: 'Getting Started', slug: 'guides/getting-started' },
-            { label: 'Route API', slug: 'guides/route-api' },
-            { label: 'Weather API', slug: 'guides/weather-api' },
+            { label: "Getting Started", slug: "guides/getting-started" },
+            { label: "Route API", slug: "guides/route-api" },
+            { label: "Weather API", slug: "guides/weather-api" },
           ],
         },
       ],
