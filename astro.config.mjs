@@ -29,7 +29,10 @@ export default defineConfig({
             { label: "Route API", slug: "guides/route-api" },
             { label: "Accidents API", slug: "guides/accidents-api" },
             { label: "Cluster API", slug: "guides/cluster-api" },
-            { label: "Weather API", slug: "guides/weather-api" },
+            {
+              label: "(Work in progress) Weather API",
+              slug: "guides/weather-api",
+            },
           ],
         },
       ],
