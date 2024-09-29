@@ -33,6 +33,10 @@ export default defineConfig({
               label: "(Work in progress) Weather API",
               slug: "guides/weather-api",
             },
+            {
+              label: "Safe route API",
+              slug: "guides/safe-route-api",
+            },
           ],
         },
       ],
