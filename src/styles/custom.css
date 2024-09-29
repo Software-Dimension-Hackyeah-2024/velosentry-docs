@@ -1,3 +1,9 @@
-:root {
+:root[data-theme="light"],
+[data-theme="light"] ::backdrop {
+  --sl-color-text-accent: #0a9f76;
+}
+
+:root[data-theme="dark"],
+[data-theme="dark"] ::backdrop {
   --sl-color-text-accent: #0a9f76;
 }
