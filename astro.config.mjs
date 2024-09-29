@@ -27,6 +27,8 @@ export default defineConfig({
             // Each item here is one entry in the navigation menu.
             { label: "Getting Started", slug: "guides/getting-started" },
             { label: "Route API", slug: "guides/route-api" },
+            { label: "Accidents API", slug: "guides/accidents-api" },
+            { label: "Cluster API", slug: "guides/cluster-api" },
             { label: "Weather API", slug: "guides/weather-api" },
           ],
         },

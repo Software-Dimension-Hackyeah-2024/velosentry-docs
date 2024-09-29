@@ -3,8 +3,161 @@ title: Route API
 description: A guide to using the VeloSentry Route API for finding safe bike paths.
 ---
 
-The *Route API* determines the safest bike route through points 0 to N-1.
+The _Route API_ determines few possible bike routes through points 0 to N-1.
 
 ```sh
 curl 'https://velosentry.io/route/[lon0],[lat0];[lon1],[lat1];...;[lonN-1],[latN-1]'
+```
+
+## Parameters:
+
+The endpoint requires all the points the route should go through in a format [longitude],[latitude]
+
+## Response:
+
+For more information on the response details please refer to [OSRM documentation](https://project-osrm.org/docs/v5.24.0/api/#match-service).
+
+```json
+{
+  "code": "Ok",
+  "routes": [
+    {
+      "legs": [
+        {
+          "steps": [
+            {
+              "geometry": {
+                "coordinates": [
+                  [19.939198, 50.045729],
+                  [19.93904, 50.045783],
+                  [19.938764, 50.045888],
+                  ...
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 298,
+                "bearing_before": 0,
+                "location": [19.939198, 50.045729],
+                "modifier": "right",
+                "type": "depart"
+              },
+              "mode": "cycling",
+              "driving_side": "right",
+              "name": "Bulwar Inflancki",
+              "intersections": [
+                {
+                  "out": 0,
+                  "entry": [true],
+                  "bearings": [298],
+                  "location": [19.939198, 50.045729]
+                },
+                {
+                  "out": 2,
+                  "in": 1,
+                  "entry": [true, false, true],
+                  "bearings": [135, 150, 330],
+                  "location": [19.936359, 50.048247]
+                },
+                ...
+              ],
+              "weight": 34,
+              "duration": 34,
+              "distance": 608.6
+            },
+            {
+              "geometry": {
+                "coordinates": [
+                  [19.934854, 50.050301],
+                  [19.934611, 50.050815],
+                  [19.934548, 50.050936],
+                  ...
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 341,
+                "bearing_before": 344,
+                "location": [19.934854, 50.050301],
+                "modifier": "slight right",
+                "type": "fork"
+              },
+              "mode": "cycling",
+              "driving_side": "right",
+              "name": "",
+              "intersections": [
+                {
+                  "out": 3,
+                  "in": 1,
+                  "entry": [true, false, true, true],
+                  "bearings": [60, 165, 330, 345],
+                  "location": [19.934854, 50.050301]
+                },
+                {
+                  "out": 2,
+                  "in": 0,
+                  "entry": [false, true, true],
+                  "bearings": [165, 240, 345],
+                  "location": [19.934548, 50.050936]
+                },
+                ...
+              ],
+              "weight": 32.5,
+              "duration": 32.5,
+              "distance": 539.5
+            }
+          ],
+          "summary": "Podzamcze, Kanonicza",
+          "weight": 176.3,
+          "duration": 176.3,
+          "annotation": {
+            "metadata": {
+              "datasource_names": ["lua profile"]
+            },
+            "datasources": [
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+              0
+            ],
+            "weight": [
+              0.7, 1.3, 1.5, ...
+            ],
+            "nodes": [
+              12188424095, 12188424096, 12188424097, ...
+            ],
+            "distance": [
+              12.816617692, 22.968705112, 26.875027215, ...
+            ],
+            "duration": [
+              0.7, 1.3, 1.5, ...
+            ],
+            "speed": [
+              18.3, 17.7, 17.9, ...
+            ]
+          },
+          "distance": 1484.8
+        }
+      ],
+      "weight_name": "duration",
+      "weight": 176.3,
+      "duration": 176.3,
+      "distance": 1484.8
+    }
+  ],
+  "waypoints": [
+    {
+      "hint": "IkDbgG6A3IAHAAAAAwAAAL8AAAAnAAAA3hBNQWXVlEC7XqtDYbKGQgcAAAADAAAAvwAAACcAAABFEQAAfj8wASGj-wKoPzABU6P7AgoAbwf3HdYo",
+      "distance": 6.323613065,
+      "name": "Bulwar Inflancki",
+      "location": [19.939198, 50.045729]
+    },
+    {
+      "hint": "hN6KiYzeiok6AAAADQAAAAAAAAAAAAAASIIbQVgrC0AAAAAAAAAAADoAAAANAAAAAAAAAAAAAABFEQAAtDcwAS_L-wLeNzABIMv7AgAA3wH3HdYo",
+      "distance": 3.438459115,
+      "name": "Kanonicza",
+      "location": [19.937204, 50.055983]
+    }
+  ]
+}
 ```

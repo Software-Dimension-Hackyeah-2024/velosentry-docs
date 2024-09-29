@@ -1,0 +1,52 @@
+---
+title: Cluster API
+description: A guide to using the VeloSentry Cluster API.
+---
+
+The _Cluster API_ groups the accidents on the route and returns one coordinate for each cluster.
+
+```sh
+curl 'https://velosentry.io//cluster-accidents?coords=20.023949,50.084293;19.907637,50.027573&maxDistance=200&clusterDistance=200'
+```
+
+## Parameters
+
+- `coords` - A list of coordinates that form the route
+- `maxDistance` - maximal distance of the accident from the chosen route in meters
+- `clusterDistance` - maximal radius in which the accidents are in the same cluster
+
+## Response
+
+```json
+{
+  "0": {
+    "point": {
+      "type": "Point",
+      "coordinates": [
+        19.96604895485494,
+        50.05605781738232
+      ]
+    },
+    "severityCount": {
+      "MINOR": 0,
+      "SERIOUS": 4,
+      "FATAL": 0
+    }
+  },
+  "1": {
+    "point": {
+      "type": "Point",
+      "coordinates": [
+        19.936062806377258,
+        50.04143495523865
+      ]
+    },
+    "severityCount": {
+      "MINOR": 0,
+      "SERIOUS": 4,
+      "FATAL": 1
+    }
+  },
+  ...
+}
+```

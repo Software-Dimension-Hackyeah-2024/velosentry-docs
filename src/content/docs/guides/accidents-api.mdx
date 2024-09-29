@@ -1,0 +1,43 @@
+---
+title: Accidents API
+description: A guide to using the VeloSentry Accidents API.
+---
+
+The _Accidents API_ fetches data on road accidents that occured on the path in previous three years.
+
+```sh
+curl 'https://velosentry.io/accidents?coords=20.023949,50.084293;19.907637,50.027573&maxDistance=1000'
+```
+
+## Parameters
+
+- `coords` - geographical coordinates of the start and end point
+- `maxDistance` - maximal distance of the accident from the chosen route in meters
+
+## Response
+
+The json returns all occurances of accidents along with its id and severity.
+
+```json
+[
+  {
+    "id": 203110929,
+    "lat": 50.066467,
+    "long": 19.969736,
+    "severity": "SERIOUS"
+  },
+  {
+    "id": 203122234,
+    "lat": 50.0596666,
+    "long": 19.9663611,
+    "severity": "SERIOUS"
+  },
+  {
+    "id": 203156045,
+    "lat": 50.0540555,
+    "long": 19.9438607,
+    "severity": "SERIOUS"
+  },
+  ...
+]
+```
