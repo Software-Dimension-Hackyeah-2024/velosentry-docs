@@ -1,0 +1,148 @@
+---
+title: Safe Route API
+description: A guide to using the VeloSentry Safe Route API for finding safe bike paths with safety score and route details.
+---
+
+The _Route API_ determines few possible bike routes through points 0 to N-1.
+
+```sh
+curl 'https://velosentry.io/safe-route/[lon0],[lat0];[lon1],[lat1];...;[lonN-1],[latN-1]'
+```
+
+## Parameters:
+
+The endpoint requires all the points the route should go through in a format [longitude],[latitude]
+
+## Response:
+
+In addition to the `/route` endpoint, the endpoint return safety score based on the road type, dangerous intersections and maximum speed. Additionally, it returns all available data about road quality (surface, condition, lights).
+
+For more information on the response details please refer to [OSRM documentation](https://project-osrm.org/docs/v5.24.0/api/#match-service).
+
+```json
+[
+  {
+    "route": {
+      "legs": [
+        {
+          "steps": [
+            {
+              "geometry": {
+                "coordinates": [
+                  [19.939198, 50.045729],
+                  [19.93904, 50.045783],
+                  ...
+                ],
+                "type": "LineString"
+              },
+              "maneuver": {
+                "bearing_after": 298,
+                "bearing_before": 0,
+                "location": [19.939198, 50.045729],
+                "modifier": "right",
+                "type": "depart"
+              },
+              "mode": "cycling",
+              "driving_side": "right",
+              "name": "Bulwar Inflancki",
+              "intersections": [
+                {
+                  "out": 0,
+                  "entry": [true],
+                  "bearings": [298],
+                  "location": [19.939198, 50.045729]
+                },
+              ...
+          ],
+          "summary": "Podzamcze, Kanonicza",
+          "weight": 176.3,
+          "duration": 176.3,
+          "annotation": {
+            "metadata": {
+              "datasource_names": [
+                "lua profile"
+              ]
+            },
+            "datasources": [0, 0, 0...],
+            "weight": [0.7, 1.3, 1.5...],
+            "nodes": [12188424095, 12188424096, 12188424097...],
+            "distance": [12.816617692, 22.968705112, 26.875027215...],
+            "duration": [0.7, 1.3, 1.5...],
+            "speed": [18.3, 17.7, 17.9...]
+          },
+          "distance": 1484.8
+        }
+      ],
+      "weight_name": "duration",
+      "weight": 176.3,
+      "duration": 176.3,
+      "distance": 1484.8
+        }
+      ]
+    },
+    "safety": 7,
+    "coordinates": [
+      {
+        "latitude": 50.0457087,
+        "longitude": 19.9392545
+      },
+      {
+        "latitude": 50.0457826,
+        "longitude": 19.93904
+      },
+      ...
+    ],
+    "processedRoute": [
+      {
+        "startGeo": {
+          "latitude": 50.0457087,
+          "longitude": 19.9392545
+        },
+        "endGeo": {
+          "latitude": 50.0457826,
+          "longitude": 19.93904
+        },
+        "tags": {
+          "bicycle": "designated",
+          "cycleway:surface": "asphalt",
+          "foot": "designated",
+          "footway:surface": "asphalt",
+          "highway": "path",
+          "lit": "yes",
+          "name": "Bulwar Inflancki",
+          "segregated": "no"
+        },
+        "safety": "Low speed",
+        "quality": "unknown",
+        "weight": 0.7
+      },
+      {
+        "startGeo": {
+          "latitude": 50.0457826,
+          "longitude": 19.93904
+        },
+        "endGeo": {
+          "latitude": 50.0458877,
+          "longitude": 19.9387635
+        },
+        "tags": {
+          "bicycle": "designated",
+          "cycleway:surface": "asphalt",
+          "foot": "designated",
+          "footway:surface": "asphalt",
+          "highway": "path",
+          "lit": "yes",
+          "name": "Bulwar Inflancki",
+          "segregated": "no"
+        },
+        "safety": "Low speed",
+        "quality": "unknown",
+        "weight": 1.3
+      },
+      ...
+    ],
+    "dangerousIntersectionsCoordinates": [],
+    "safetyScore": 66.4980544747082
+  }
+]
+```
